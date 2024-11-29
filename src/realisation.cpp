@@ -110,16 +110,23 @@ Matrix Mult(const Matrix& a, const Matrix& b){
 
 // Транспонирование матрицы.
 void Transposition(Matrix& matrix){
-    if(matrix.m_ != matrix.n_) return;
-    int bufer{};
-
-    for(int i{1}; i < matrix.m_; ++i){
-        for(int j{}; j < i; ++j){
-            bufer = matrix.data_[i][j];
-            matrix.data_[i][j] = matrix.data_[j][i];
-            matrix.data_[j][i] = bufer;
+    Matrix* bufer = new Matrix;
+    Construct(*bufer, matrix.m_, matrix.n_);
+    for(int i{}; i < bufer->m_; ++i){
+        for(int j{}; j < bufer->n_; ++j){
+            bufer->data_[i][j] = matrix.data_[j][i];
         }
     }
+
+    for(int i{}; i < matrix.m_; ++i){
+        delete[] matrix.data_[i];
+    }
+    delete[] matrix.data_;
+    matrix.data_ = bufer->data_;
+    int buf;
+    buf = matrix.m_;
+    matrix.m_ = matrix.n_;
+    matrix.n_ = buf;
 }
 
 // Сравнение двух матриц.

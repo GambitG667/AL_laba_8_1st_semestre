@@ -54,6 +54,12 @@ int main(){
     PrintMatrix(res);
     std::cout << "--------------\n";
 
+    Transposition(matrix1);
+    
+    PrintMatrix(matrix1);
+    std::cout << "--------------\n";
+   
+
     Matrix A;
     Construct(A, 3, 3);
     Matrix B;
@@ -84,11 +90,7 @@ int main(){
     Transposition(summ);
     PrintMatrix(summ);
     std::cout << "-----------------\n";
-
-
-
-
-
+    
 
 
     return 0;
